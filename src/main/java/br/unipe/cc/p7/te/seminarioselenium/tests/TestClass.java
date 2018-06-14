@@ -1,22 +1,22 @@
 package br.unipe.cc.p7.te.seminarioselenium.tests;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 
 import br.unipe.cc.p7.te.seminarioselenium.resources.WebDriverManager;
 
 public abstract class TestClass {
 	
-	protected WebDriver driver;
+	protected static WebDriver driver;
 	
-	@Before
-	public void Before() {
+	@BeforeClass
+	public static void Before() {
 		driver = WebDriverManager.GetDriver();
 	}	
 	
-	@After
-	public void After() {
+	@AfterClass
+	public static void After() {
 		driver.close();
 	}
 	

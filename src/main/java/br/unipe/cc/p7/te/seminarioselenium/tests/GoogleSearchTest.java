@@ -16,14 +16,14 @@ public class GoogleSearchTest extends TestClass {
 		
 		String SearchInputID = "lst-ib";
 		
-		this.driver.get(Constants.Google_URL);
+		driver.get(Constants.Google_URL);
 		
-		WebElement input = this.driver.findElement(By.id(SearchInputID));
+		WebElement input = driver.findElement(By.id(SearchInputID));
 		
 		input.sendKeys("Selenium Webdriver");
 		input.sendKeys(Keys.RETURN);
 		
-		WebElement inputAfterSearch = this.driver.findElement(By.id(SearchInputID));
+		WebElement inputAfterSearch = driver.findElement(By.id(SearchInputID));
 		
 		Assert.assertEquals("Selenium Webdriver", inputAfterSearch.getAttribute("value"));
 	

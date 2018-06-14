@@ -17,11 +17,11 @@ public class LoginTest extends TestClass {
 		String inputPasswordID = "pass";
 		String inputLoginButtonXPath = "//*[@id=\"pwd-container\"]/div[2]/section/form/fieldset/input[3]";
 		
-		this.driver.get(Constants.Helpdesk_Engeselt_URL);
+		driver.get(Constants.Helpdesk_Engeselt_URL);
 		
-		WebElement inputUser = this.driver.findElement(By.id(inputUserID));
-		WebElement inputPassword = this.driver.findElement(By.id(inputPasswordID));
-		WebElement inputLoginButton = this.driver.findElement(By.xpath(inputLoginButtonXPath));
+		WebElement inputUser = driver.findElement(By.id(inputUserID));
+		WebElement inputPassword = driver.findElement(By.id(inputPasswordID));
+		WebElement inputLoginButton = driver.findElement(By.xpath(inputLoginButtonXPath));
 		
 		inputUser.sendKeys("larissa.targino");
 		inputPassword.sendKeys("lary7206");
@@ -30,10 +30,37 @@ public class LoginTest extends TestClass {
 		//Validar Login
 		String labelNameXPath = "/html/body/div[1]/nav/div/strong";
 		
-		WebElement labelName = this.driver.findElement(By.xpath(labelNameXPath));
+		WebElement labelName = driver.findElement(By.xpath(labelNameXPath));
 		
 		Assert.assertEquals("Larissa", labelName.getText());
 		
 	}
+
+	@Test
+	public void RunLoginTestFail() {
+		
+		//Efetua Login
+		String inputUserID = "name";
+		String inputPasswordID = "pass";
+		String inputLoginButtonXPath = "//*[@id=\"pwd-container\"]/div[2]/section/form/fieldset/input[3]";
+		
+		driver.get(Constants.Helpdesk_Engeselt_URL);
+		
+		WebElement inputUser = driver.findElement(By.id(inputUserID));
+		WebElement inputPassword = driver.findElement(By.id(inputPasswordID));
+		WebElement inputLoginButton = driver.findElement(By.xpath(inputLoginButtonXPath));
+		
+		inputUser.sendKeys("larissa.targino");
+		inputPassword.sendKeys("********");
+		inputLoginButton.click();
+		
+		//Validar Login
+		String labelAccessFailXPath = "/html/body/div/div/div[2]/section/form/h3";
+		WebElement labelAccessFail = driver.findElement(By.xpath(labelAccessFailXPath));
+		
+		Assert.assertEquals("Acesso negado", labelAccessFail.getText());
+		
+	}
+		
 	
 }
